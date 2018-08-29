@@ -47,4 +47,9 @@ public class UserController {
         ResultModel resultModel = userServices.getUserList(pageIndex,pageSize);
         return resultModel;
     }
+
+    @RequestMapping(value = "test")
+    public String test() throws Exception{
+        return "test";
+    }
 }
