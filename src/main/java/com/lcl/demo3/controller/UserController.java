@@ -28,7 +28,7 @@ public class UserController {
     public ModelAndView index() throws Exception{
         ModelAndView mv = new ModelAndView();
         mv.addObject("msg","第一个templates页面");
-        mv.setViewName("index.html");
+        mv.setViewName("html/index");
         return mv;
     }
 

@@ -6,3 +6,4 @@ log
 logs
 .projects
 .classpath
+node_modules

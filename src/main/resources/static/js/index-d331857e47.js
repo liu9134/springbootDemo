@@ -1,0 +1,1 @@
+$(function(){$(".text").html("这是jquery赋值内容！")});
