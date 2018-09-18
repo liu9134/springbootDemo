@@ -24,14 +24,6 @@ public class UserController {
     @Autowired
     private UserServices userServices;
 
-    @RequestMapping(value = "index")
-    public ModelAndView index() throws Exception{
-        ModelAndView mv = new ModelAndView();
-        mv.addObject("msg","第一个templates页面");
-        mv.setViewName("html/index");
-        return mv;
-    }
-
     @RequestMapping(value = "add")
     public ResultModel addUser(HttpServletRequest request, HttpServletResponse response,
                         @RequestParam(value = "loginName", required = true) String loginName,
@@ -48,8 +40,4 @@ public class UserController {
         return resultModel;
     }
 
-    @RequestMapping(value = "test")
-    public String test() throws Exception{
-        return "test";
-    }
 }

@@ -37,6 +37,19 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+
+		<!-- alibaba的druid数据库连接池 -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid-spring-boot-starter</artifactId>
+			<version>1.1.10</version>
+		</dependency>
+		<!--<dependency>-->
+		<!--<groupId>com.alibaba</groupId>-->
+		<!--<artifactId>druid</artifactId>-->
+		<!--<version>1.1.11</version>-->
+		<!--</dependency>-->
+		<!--mybatis的starter-->
 		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter</artifactId>
@@ -75,12 +88,6 @@
 			<groupId>com.github.pagehelper</groupId>
 			<artifactId>pagehelper-spring-boot-starter</artifactId>
 			<version>1.2.3</version>
-		</dependency>
-		<!-- alibaba的druid数据库连接池 -->
-		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>druid-spring-boot-starter</artifactId>
-			<version>1.1.2</version>
 		</dependency>
 
 		<dependency>
@@ -150,6 +157,15 @@
 						<scope>runtime</scope>
 					</dependency>
 				</dependencies>
+			</plugin>
+			<!--install时跳过test-->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.12.4</version>
+				<configuration>
+					<skipTests>true</skipTests>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
