@@ -24,6 +24,8 @@ var del = require('del');
 //
 var runSequence = require('gulp-run-sequence'); 
 var Config = require('./gulpfile.config.js');
+// 显示打包时错误日志
+var gutil = require('gulp-util');
 //======= gulp build 打包资源 ===============
 function prod() {
     /**
@@ -70,6 +72,9 @@ function prod() {
         //.pipe(jshint('.jshintrc'))
         //.pipe(jshint.reporter('default'))
         .pipe(uglify())
+        .on('error', function (err) {
+            gutil.log(gutil.colors.red('[Error]'), err.toString());
+        })
         .pipe(rev())
         .pipe(gulp.dest(Config.js.dist))
         .pipe(rev.manifest())
