@@ -24,6 +24,17 @@ public class StringUtils {
         return UUID.randomUUID().toString().replace("-", "").toLowerCase();
     }
 
+    public static void main(String[] args) {
+        List<String> list = new ArrayList<>();
+        list.add("132");
+        list.add("132");
+        list.add("132");
+        list.add("132");
+        for (int i=0;i<list.size();i++){
+            System.out.println(list.get(i));
+        }
+    }
+
 //    public static void main(String[] args) {
 //        System.out.println("当前时间轴："+new Date().getTime()/1000);
 //        Map<Integer,Integer> map = new HashMap<Integer,Integer>();
