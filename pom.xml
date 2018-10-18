@@ -6,7 +6,7 @@
 	<groupId>com.lcl</groupId>
 	<artifactId>demo3</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>demo3</name>
 	<description>Demo project for Spring Boot and mybatis</description>
@@ -22,6 +22,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<tomcat.version>7.0.75</tomcat.version>
 	</properties>
 
 	<dependencies>
@@ -36,6 +37,20 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+			<!--排除自带tomcat-->
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-servlet-api</artifactId>
+			<version>8.5.34</version>
+			<scope>provided</scope>
 		</dependency>
 
 		<!-- alibaba的druid数据库连接池 -->
@@ -119,6 +134,8 @@
 	</dependencies>
 
 	<build>
+		<!--打包的war名称-->
+		<finalName>demo3</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -167,7 +184,42 @@
 					<skipTests>true</skipTests>
 				</configuration>
 			</plugin>
+			<!--maven jar plugin 插件打包jar包时过滤不打包文件-->
+			<!--<plugin>-->
+				<!--<groupId>org.apache.maven.plugins</groupId>-->
+				<!--<artifactId>maven-jar-plugin</artifactId>-->
+				<!--<version>3.0.2</version>-->
+				<!--<executions>-->
+					<!--<execution>-->
+					<!--<phase>package</phase>-->
+					<!--<goals>-->
+						<!--<goal>jar</goal>-->
+					<!--</goals>-->
+					<!--</execution>-->
+				<!--</executions>-->
+				<!--<configuration>-->
+					<!--<excludes>-->
+						<!--&lt;!&ndash;注意这玩意从编译结果目录开始算目录结构&ndash;&gt;-->
+						<!--<exclude>static_dev/**</exclude>-->
+						<!--<exclude>templates_dev/**</exclude>-->
+					<!--</excludes>-->
+				<!--</configuration>-->
+			<!--</plugin>-->
+
+
 		</plugins>
+		<!--war包过滤不打包文件-->
+		<resources>
+			<resource>
+				<filtering>true</filtering>
+				<directory>src/main/resources</directory>
+				<excludes>
+					<exclude>generator/**</exclude>
+					<exclude>static_dev/**</exclude>
+					<exclude>templates_dev/**</exclude>
+				</excludes>
+			</resource>
+		</resources>
 	</build>
 
 
