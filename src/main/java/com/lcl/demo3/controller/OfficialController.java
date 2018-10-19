@@ -15,7 +15,7 @@ public class OfficialController {
     @RequestMapping(value = "/")
     public ModelAndView index() throws Exception{
         ModelAndView mv = new ModelAndView();
-        mv.addObject("msg","第一个templates页面");
+        mv.addObject("msg","第一个templates页面,测试热部署！");
         mv.setViewName("html/index");
         return mv;
     }
